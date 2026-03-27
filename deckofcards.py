@@ -1,0 +1,43 @@
+import random
+
+
+class DeckOfCards:
+    SUITS = ["Hearts", "Diamonds", "Clubs", "Spades"]
+    RANKS = [
+        "Ace",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "Jack",
+        "Queen",
+        "King",
+    ]
+
+    FACES_CARDS = [] # Make tuples for face cards and their values
+
+    def __init__(self):
+        self.__cards = []
+        self.create_deck()
+
+    def create_deck(self):
+        for suit in self.SUITS:
+            for rank in self.RANKS:
+                self.__cards.append((rank, suit))
+
+    def shuffle_deck(self):
+        random.shuffle(self.__cards)
+
+    def deal_card(self):
+        if len(self.__cards) < 1:
+            return None
+        else:
+           return self.__cards.pop()
+
+    def get_deck(self):
+        return self.__cards
