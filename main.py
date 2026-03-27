@@ -1,5 +1,6 @@
 from deckofcards import DeckOfCards
 from blackjack import *
+
 import time
 
 
@@ -23,18 +24,24 @@ def main():
     player_total = hand_value(player_hand)
     dealer_total = hand_value(dealer_hand)
 
-    print(f"Player Hand: {player_hand}, Total: {player_total}")
-    print(f"Dealer Hand: {dealer_hand}, Total: {dealer_total}")
+    game_over = False
 
-    print("\n1. Hit\n2. Stand")
-    choice = input()
+    while not game_over:
 
-    if choice == "1":
-        player_hand.append(deck.deal_card())
+        print(f"Player Hand: {player_hand}, Total: {player_total}")
+        print(f"Dealer Hand: {dealer_hand}, Total: {dealer_total}")
 
-    player_total = hand_value(player_hand)
+        if player_total > 21:
+            game_over = True
+            break
 
-    print(f"Player Hand: {player_hand}, Total: {player_total}")
-    print(f"Dealer Hand: {dealer_hand}, Total: {dealer_total}")
+        print("\n1. Hit\n2. Stand")
+        choice = input()
+
+        if choice == "1":
+            player_hand.append(deck.deal_card())
+
+        player_total = hand_value(player_hand)
+
 if __name__ == "__main__":
     main()
