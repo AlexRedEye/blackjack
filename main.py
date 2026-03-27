@@ -40,8 +40,27 @@ def main():
 
         if choice == "1":
             player_hand.append(deck.deal_card())
+            player_total = hand_value(player_hand)
+        if choice == "2":
+            while hand_value(dealer_hand) <= 16:
+                dealer_hand.append(deck.deal_card())
+                dealer_total = hand_value(dealer_hand)
+                print("Dealer hits!")
 
-        player_total = hand_value(player_hand)
+            print(f"Player Hand: {player_hand}, Total: {player_total}")
+            print(f"Dealer Hand: {dealer_hand}, Total: {dealer_total}")
+
+
+            if dealer_total < player_total:
+                game_over = True
+                break
+            if dealer_total > player_total:
+                game_over = True
+                break
+            if dealer_total == player_total:
+                game_over = True
+                break
+
 
 if __name__ == "__main__":
     main()
