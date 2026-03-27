@@ -19,8 +19,6 @@ class DeckOfCards:
         "King",
     ]
 
-    FACES_CARDS = [] # Make tuples for face cards and their values
-
     def __init__(self):
         self.__cards = []
         self.create_deck()
